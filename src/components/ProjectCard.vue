@@ -2,10 +2,11 @@
   <div
  v-reveal
   @click="$emit('click')"
-  class="group cursor-pointer relative rounded-2xl p-[1px]
-           bg-gradient-to-br from-white/10 to-white/5
-           hover:from-cyanx/40 hover:to-neon/40
-           transition"
+  class="relative rounded-2xl p-8
+         bg-gradient-to-b from-white/8 to-white/3
+         border border-white/10
+         shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+         hover:-translate-y-1 transition"
   >
     <div
       class="relative h-full rounded-2xl p-8

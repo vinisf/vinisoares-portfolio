@@ -1,74 +1,65 @@
 <template>
-  <section id="projects" class="relative py-28 px-6">
+  
+  <SectionShell id="projects" glowA="animate-glow-1" glowB="animate-glow-2" >
     <div class="max-w-6xl mx-auto">
-      <!-- Título -->
-      <div class="mb-16 text-center" v-reveal>
-        <p class="text-cyanx tracking-[0.3em] text-sm mb-4">
-          PROJETOS
+      <header class="text-center mb-14" v-reveal>
+        <p class="text-cyanx tracking-[0.3em] text-sm mb-4">PROJETOS</p>
+        <h2 class="text-4xl md:text-5xl font-black">Coisas que eu construí</h2>
+        <p class="text-white/60 mt-4 max-w-2xl mx-auto">
+          Projetos reais, focados em regra de negócio, dados e UX limpa.
         </p>
-        <h2 class="text-4xl md:text-5xl font-black">
-          Coisas que eu construí
-        </h2>
-      </div>
+      </header>
 
-      <!-- Grid -->
       <div class="grid gap-8 md:grid-cols-2">
         <ProjectCard
-          v-for="project in projects"
-          :key="project.title"
+          v-for="p in projects"
+          :key="p.title"
           v-reveal
-          :title="project.title"
-          :description="project.description"
-          :stack="project.stack"
-          @click="openProject(project)"
+          :title="p.title"
+          :description="p.description"
+          :stack="p.stack"
+          :tags="p.tags"
+          @click="openProject(p)"
         />
       </div>
-    </div>
 
-    <!-- MODAL -->
-    <ProjectModal
-      :open="!!selected"
-      :project="selected"
-      @close="selected = null"
-    />
-  </section>
+      <ProjectModal :open="!!selected" :project="selected" @close="selected=null" />
+    </div>
+  </SectionShell>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import SectionShell from './SectionShell.vue'
 import ProjectCard from './ProjectCard.vue'
 import ProjectModal from './ProjectModal.vue'
-
-import selecao1 from '../assets/projects/selecao-1.gif'
-import selecao2 from '../assets/projects/selecao-2.png'
-import api1 from '../assets/projects/api-1.png'
 
 const selected = ref(null)
 
 const projects = [
   {
     title: 'Sistema de Seleção Pública',
-    description: 'Plataforma para inscrições e classificação.',
-    longDescription:
-      'Sistema completo usado em produção para gerenciar inscrições, aplicar regras de cota, classificar candidatos e gerar relatórios administrativos.',
+    description: 'Inscrições, cotas, classificação, relatórios e painel admin.',
     stack: 'PHP • PostgreSQL • APIs • Painel Admin',
-    images: [selecao1, selecao2],
+    tags: ['Produção', 'Regras de negócio', 'Relatórios'],
+    images: [],
+    longDescription: '…',
     github: '',
     live: '',
   },
   {
     title: 'API de Gestão Educacional',
-    description: 'API REST para controle acadêmico.',
-    longDescription:
-      'API focada em performance e integridade, com autenticação e permissões.',
+    description: 'API REST com autenticação, permissões e foco em performance.',
     stack: 'Node.js • PostgreSQL • Auth • REST',
-    images: [api1],
+    tags: ['API', 'Performance', 'RBAC'],
+    images: [],
+    longDescription: '…',
     github: '',
     live: '',
   },
 ]
 
-function openProject(project) {
-  selected.value = project
+function openProject(p) {
+  selected.value = p
 }
 </script>

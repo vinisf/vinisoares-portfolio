@@ -75,3 +75,92 @@ animation: glow1 8s ease-in-out infinite;
 .animate-modal {
   animation: modalIn 0.35s ease-out;
 }
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.12) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.75);
+}
+
+.li::before {
+  content: "✦";
+  margin-right: 10px;
+  color: rgba(34,211,238,.9);
+}
+.btn-primary{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:700;
+  color:#0b0b14;
+  background: linear-gradient(90deg, rgba(34,211,238,1), rgba(163,230,53,1));
+  transition: transform .2s ease;
+}
+.btn-primary:hover{ transform: scale(1.04); }
+
+.btn-ghost{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:700;
+  color: rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+  transition: background .2s ease, transform .2s ease;
+}
+.btn-ghost:hover{
+  background: rgba(255,255,255,.08);
+  transform: translateY(-1px);
+}
+.bg-section {
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(34,211,238,0.12), transparent 60%),
+    radial-gradient(1000px 600px at 90% 80%, rgba(168,85,247,0.12), transparent 60%),
+    linear-gradient(180deg, #070711, #05050c);
+}
+
+.bg-section-blue {
+  background:
+    radial-gradient(1200px 600px at 15% 20%, rgba(34,211,238,0.18), transparent 60%),
+    linear-gradient(180deg, #070711, #05050c);
+}
+
+.bg-section-purple {
+  background:
+    radial-gradient(1000px 600px at 85% 30%, rgba(168,85,247,0.18), transparent 60%),
+    linear-gradient(180deg, #070711, #05050c);
+}
+
+.bg-section-neutral {
+  background:
+    linear-gradient(180deg, #070711, #05050c);
+}
+@keyframes subtleShift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.bg-animated {
+  background-size: 200% 200%;
+  animation: subtleShift 40s linear infinite;
+}

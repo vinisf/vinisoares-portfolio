@@ -2,11 +2,16 @@
   <main class="relative min-h-screen text-white">
     <NavBar />
     <Hero />
+    <SectionDivider />
     <Projects />
+    <SectionDivider />
     <About />
+    <SectionDivider />
     <Contact />
+
   </main>
 </template>
+
 
 <script setup>
 import NavBar from './components/NavBar.vue'
