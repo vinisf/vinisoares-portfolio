@@ -46,20 +46,12 @@
       </p>
 
       <div class="flex justify-center gap-4">
-        <a
-          href="#projects"
-          class="px-8 py-3 rounded-xl font-semibold text-black
-                 bg-gradient-to-r from-cyanx to-limey
-                 hover:scale-105 transition"
-        >
-          Ver projetos
-        </a>
+<a href="#projects" class="btn-primary btn-primary-dark">
+  Ver projetos
+</a>
 
-        <a
-          href="#contact"
-          class="px-8 py-3 rounded-xl border border-white/20
-                 hover:bg-white/10 transition"
-        >
+<a href="#projects" class="btn-primary">
+
           Contato
         </a>
       </div>

@@ -1,13 +1,24 @@
 <template>
   <main class="relative min-h-screen text-white">
     <NavBar />
-    <Hero />
-    <SectionDivider />
-    <Projects />
-    <SectionDivider />
-    <About />
-    <SectionDivider />
-    <Contact />
+  <Hero />
+
+<SectionShell
+  id="projects"
+  glowA="animate-glow-1"
+  glowB="animate-glow-2"
+  class="bg-section-blue"
+>
+  <Projects />
+</SectionShell>
+
+<SectionShell id="about" class="bg-section-neutral">
+  <About />
+</SectionShell>
+
+<SectionShell id="contact" class="bg-section-purple">
+  <Contact />
+</SectionShell>
 
   </main>
 </template>
