@@ -26,9 +26,12 @@
             {{ content[lang].hero.projects }}
           </a>
 
-          <a href="#contact" class="btn-ghost">
-            {{ content[lang].hero.contact }}
+
+          <a href="/cv/Vinicius-Soares-CV.pdf" download target="_blank" rel="noopener noreferrer" class="btn-ghost">
+            Download CV
           </a>
+
+
         </div>
       </div>
 

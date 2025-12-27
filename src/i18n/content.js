@@ -37,6 +37,16 @@ export const content = {
             contact: "Contato",
             cta: "Ver projetos",
         },
+        footer: {
+            name: "Vinicius Soares",
+            role: "Full Stack Developer",
+            links: {
+                projects: "Projetos",
+                about: "Sobre",
+                contact: "Contato",
+            },
+            copyright: "Todos os direitos reservados.",
+        },
 
     },
 
@@ -79,6 +89,17 @@ export const content = {
                 "If you value well-built backends, organized data, and products that actually work, feel free to reach out.",
             footer: "I usually reply faster on LinkedIn.",
         },
+        footer: {
+            name: "Vinicius Soares",
+            role: "Full Stack Developer",
+            links: {
+                projects: "Projects",
+                about: "About",
+                contact: "Contact",
+            },
+            copyright: "All rights reserved.",
+        },
+
     },
 
 };
