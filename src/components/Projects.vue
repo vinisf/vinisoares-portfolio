@@ -1,31 +1,47 @@
 <template>
   
-  <SectionShell id="projects" glowA="animate-glow-1" glowB="animate-glow-2" >
-    <div class="max-w-6xl mx-auto">
-      <header class="text-center mb-14" v-reveal>
-        <p class="text-cyanx tracking-[0.3em] text-sm mb-4">PROJETOS</p>
-        <h2 class="text-4xl md:text-5xl font-black">Coisas que eu construí</h2>
-        <p class="text-white/60 mt-4 max-w-2xl mx-auto">
-          Projetos reais, focados em regra de negócio, dados e UX limpa.
-        </p>
-      </header>
+<SectionShell
+  id="projects"
+  glowA="animate-glow-1"
+  glowB="animate-glow-2"
+  class="bg-section-blue"
+>
+  <div class="max-w-6xl xl:max-w-7xl mx-auto px-2 sm:px-4">
+    <header class="text-center mb-16 md:mb-20" v-reveal>
+      <p class="text-cyanx tracking-[0.3em] text-sm mb-4">
+        PROJETOS
+      </p>
 
-      <div class="grid gap-8 md:grid-cols-2">
-        <ProjectCard
-          v-for="p in projects"
-          :key="p.title"
-          v-reveal
-          :title="p.title"
-          :description="p.description"
-          :stack="p.stack"
-          :tags="p.tags"
-          @click="openProject(p)"
-        />
-      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
+        Coisas que eu construí
+      </h2>
 
-      <ProjectModal :open="!!selected" :project="selected" @close="selected=null" />
+      <p class="text-white/60 mt-4 max-w-2xl mx-auto">
+        Projetos reais, focados em regra de negócio, dados e UX limpa.
+      </p>
+    </header>
+
+    <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
+      <ProjectCard
+        v-for="p in projects"
+        :key="p.title"
+        v-reveal
+        :title="p.title"
+        :description="p.description"
+        :stack="p.stack"
+        :tags="p.tags"
+        @click="openProject(p)"
+      />
     </div>
-  </SectionShell>
+
+    <ProjectModal
+      :open="!!selected"
+      :project="selected"
+      @close="selected = null"
+    />
+  </div>
+</SectionShell>
+
 </template>
 
 <script setup>
