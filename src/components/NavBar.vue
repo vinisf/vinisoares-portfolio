@@ -25,13 +25,16 @@
       </nav>
 
       <!-- AÇÕES -->
-      <div class="flex items-center gap-3">
-        <!-- CTA -->
-        <a href="#projects" class="px-4 py-2 rounded-lg text-sm font-semibold
-                 border border-white/20
-                 hover:bg-white/10 transition">
-          {{ content[lang].nav.cta }}
-        </a>
+      <div class="flex items-center gap-3 transition-opacity duration-200"
+        :class="open ? 'opacity-0 pointer-events-none' : 'opacity-100'">
+
+        <button class="md:hidden flex flex-col justify-center gap-1" @click="open = true" aria-label="Abrir menu">
+          <span class="w-5 h-[2px] bg-white"></span>
+          <span class="w-5 h-[2px] bg-white"></span>
+          <span class="w-5 h-[2px] bg-white"></span>
+        </button>
+
+
 
         <!-- TOGGLE LANG -->
         <button @click="toggleLang" class="flex items-center gap-2
@@ -52,10 +55,66 @@
 
       </div>
     </div>
+    <!-- MENU MOBILE -->
+    <transition name="menu">
+      <div v-if="open" class="fixed inset-0 z-[60]
+           bg-bg0/90 backdrop-blur-xl
+           md:hidden">
+        <div class="flex flex-col h-full">
+          <!-- HEADER -->
+          <div class="flex items-center justify-between px-6 py-4">
+            <span class="font-bold text-lg">
+              <span class="text-cyanx"></span><span class="text-white/60"></span>
+            </span>
+
+            <button @click="close" class="text-2xl text-white" aria-label="Fechar menu">
+              ✕
+            </button>
+          </div>
+
+          <!-- LINKS -->
+          <nav class="flex-1 flex flex-col
+               items-center justify-center
+               gap-10 text-2xl font-bold">
+            <a @click="go('#about')" class="mobile-link">
+              {{ content[lang].nav.about }}
+            </a>
+            <a @click="go('#projects')" class="mobile-link">
+              {{ content[lang].nav.projects }}
+            </a>
+            <a @click="go('#contact')" class="mobile-link">
+              {{ content[lang].nav.contact }}
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </transition>
+
   </header>
 </template>
 
 <script setup>
 import { lang, toggleLang } from "@/i18n/lang";
 import { content } from "@/i18n/content";
+import { ref, watch } from "vue";
+
+const open = ref(false);
+
+function close() {
+  open.value = false;
+}
+
+function go(hash) {
+  close();
+  setTimeout(() => {
+    window.location.hash = hash;
+  }, 120);
+}
+
+// trava scroll no mobile
+watch(open, (v) => {
+  document.body.style.overflow = v ? "hidden" : "";
+});
+
 </script>
