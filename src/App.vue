@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/NavBar.vue";
 import MobileMenu from "./components/MobileMenu.vue";
 
 const open = ref(false);
