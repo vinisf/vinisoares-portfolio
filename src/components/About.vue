@@ -1,11 +1,8 @@
 <template>
-<SectionShell
-  id="about"
-  glowA="animate-glow-1"
-  glowB="animate-glow-2"
-  class="bg-section-about"
->
-
+  <section
+    id="about"
+    class="relative py-28 px-6"
+  >
     <div
       class="max-w-5xl lg:max-w-6xl mx-auto
              grid gap-12 md:grid-cols-2
@@ -98,10 +95,8 @@
         </div>
       </div>
     </div>
-  </SectionShell>
+  </section>
 </template>
-
-
 <script setup>
-import SectionShell from './SectionShell.vue'
+// nenhum import necessário
 </script>

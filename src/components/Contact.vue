@@ -1,8 +1,7 @@
 <template>
-  <SectionShell
+  <section
     id="contact"
-    glowA="animate-glow-1"
-    class="bg-section-contact"
+    class="relative py-28 px-6"
   >
     <div class="max-w-4xl mx-auto px-4">
       <div
@@ -36,7 +35,6 @@
             target="_blank"
             class="btn-primary btn-primary-dark flex items-center gap-2"
           >
-            <!-- ícone -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-5 h-5"
@@ -97,11 +95,5 @@
         </p>
       </div>
     </div>
-  </SectionShell>
+  </section>
 </template>
-
-
-
-<script setup>
-import SectionShell from './SectionShell.vue'
-</script>

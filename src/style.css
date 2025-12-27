@@ -10,6 +10,49 @@
 html {
   scroll-behavior: smooth;
 }
+/* fundo global estilo Iara + sua paleta */
+.bg-global {
+  background:
+    radial-gradient(1200px 600px at 10% 15%, rgba(34,211,238,0.15), transparent 60%),
+    radial-gradient(1100px 700px at 85% 80%, rgba(168,85,247,0.15), transparent 60%),
+    linear-gradient(180deg, #070711, #05050c);
+}
+
+/* textura leve */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* movimentos lentos (vida contínua) */
+@keyframes bg-cyan {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(120px, -80px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes bg-purple {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-100px, 100px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-bg-cyan {
+  animation: bg-cyan 60s ease-in-out infinite;
+}
+
+.animate-bg-purple {
+  animation: bg-purple 75s ease-in-out infinite;
+}
+
+/* acessibilidade: reduz animação se preferências reduzirem motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bg-cyan,
+  .animate-bg-purple {
+    animation: none;
+  }
+}
+
 
 /* =========================
    Glow Animations
@@ -223,4 +266,12 @@ html {
 .bg-section-about,
 .bg-section-contact {
   background-blend-mode: screen;
+}
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.04)
+  );
+  backdrop-filter: blur(12px);
 }

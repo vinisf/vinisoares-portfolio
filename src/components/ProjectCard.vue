@@ -1,6 +1,5 @@
 <template>
   <div
-    v-reveal
     @click="$emit('click')"
     class="group relative cursor-pointer
            rounded-2xl p-7 sm:p-8
@@ -42,6 +41,7 @@
     </div>
   </div>
 </template>
+
 
 
 <script setup>
