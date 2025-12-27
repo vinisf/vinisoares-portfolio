@@ -35,29 +35,33 @@ import ProjectCard from './ProjectCard.vue'
 import ProjectModal from './ProjectModal.vue'
 
 const selected = ref(null)
+import selecao1 from '../assets/projects/selecao-1.gif'
+import selecao2 from '../assets/projects/selecao-2.png'
+import api1 from '../assets/projects/api-1.png'
 
 const projects = [
   {
     title: 'Sistema de Seleção Pública',
-    description: 'Inscrições, cotas, classificação, relatórios e painel admin.',
+    description: 'Plataforma para inscrições e classificação.',
+    longDescription:
+      'Sistema completo usado em produção para gerenciar inscrições, aplicar regras de cota, classificar candidatos e gerar relatórios administrativos.',
     stack: 'PHP • PostgreSQL • APIs • Painel Admin',
-    tags: ['Produção', 'Regras de negócio', 'Relatórios'],
-    images: [],
-    longDescription: '…',
+    images: [selecao1, selecao2],
     github: '',
     live: '',
   },
   {
     title: 'API de Gestão Educacional',
-    description: 'API REST com autenticação, permissões e foco em performance.',
+    description: 'API REST para controle acadêmico.',
+    longDescription:
+      'API focada em performance e integridade, com autenticação e permissões.',
     stack: 'Node.js • PostgreSQL • Auth • REST',
-    tags: ['API', 'Performance', 'RBAC'],
-    images: [],
-    longDescription: '…',
+    images: [api1],
     github: '',
     live: '',
   },
 ]
+
 
 function openProject(p) {
   selected.value = p

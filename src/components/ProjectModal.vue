@@ -1,8 +1,9 @@
 <template>
-  <div
-    v-if="open"
-    class="fixed inset-0 z-50 flex items-center justify-center px-4"
-  >
+<div
+  v-if="open"
+  class="fixed inset-0 z-[999] flex items-center justify-center px-4 py-10"
+>
+
     <!-- Overlay -->
     <div
       class="absolute inset-0 bg-black/70 backdrop-blur-sm"
@@ -123,12 +124,7 @@ const emit = defineEmits(['close'])
 
 const current = ref(0)
 
-watch(
-  () => props.project,
-  () => {
-    current.value = 0
-  }
-)
+
 
 function next() {
   current.value =
@@ -159,4 +155,14 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKey)
 })
+
+
+watch(
+  () => props.open,
+  (isOpen) => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+  }
+)
+
+
 </script>
