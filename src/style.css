@@ -14,65 +14,48 @@ html {
 /* =========================
    Glow Animations
 ========================= */
-
-/* Glow principal (mais rápido, mais vivo) */
 @keyframes glow1 {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(120px, 80px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(120px, 80px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
-/* Glow secundário (um pouco mais lento pra contraste) */
 @keyframes glow2 {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(-100px, -120px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-100px, -120px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
-/* Velocidades finais */
 .animate-glow-1 {
-  animation: glow1 4s linear infinite;
+  animation: glow1 18s ease-in-out infinite;
   will-change: transform;
 }
 
 .animate-glow-2 {
-  animation: glow1 8s ease-in-out infinite;
+  animation: glow2 28s ease-in-out infinite;
   will-change: transform;
 }
 
 /* =========================
-   Acessibilidade
+   Motion Accessibility
 ========================= */
 @media (prefers-reduced-motion: reduce) {
-
   .animate-glow-1,
-  .animate-glow-2 {
+  .animate-glow-2,
+  .animate-float-soft,
+  .ring-animated {
     animation: none;
   }
 }
 
+/* =========================
+   Modal
+========================= */
 @keyframes modalIn {
   from {
     opacity: 0;
     transform: scale(0.95) translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -83,13 +66,9 @@ html {
   animation: modalIn 0.35s ease-out;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, .12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, .12) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
+/* =========================
+   UI Utilities
+========================= */
 .glass {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(10px);
@@ -110,167 +89,64 @@ html {
 .li::before {
   content: "✦";
   margin-right: 10px;
-  color: rgba(34, 211, 238, .9);
+  color: rgba(34, 211, 238, 0.9);
 }
 
-.btn-primary {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 700;
-  color: #0b0b14;
-  background: linear-gradient(90deg, rgba(34, 211, 238, 1), rgba(163, 230, 53, 1));
-  transition: transform .2s ease;
-}
-
-.btn-primary:hover {
-  transform: scale(1.04);
-}
-
+/* =========================
+   Buttons (CORES ORIGINAIS)
+========================= */
+.btn-primary,
 .btn-ghost {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .9);
-  border: 1px solid rgba(255, 255, 255, .18);
-  background: rgba(255, 255, 255, .03);
-  transition: background .2s ease, transform .2s ease;
-}
-
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, .08);
-  transform: translateY(-1px);
-}
-
-.bg-section {
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(34, 211, 238, 0.12), transparent 60%),
-    radial-gradient(1000px 600px at 90% 80%, rgba(168, 85, 247, 0.12), transparent 60%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-.bg-section-blue {
-  background:
-    radial-gradient(1200px 600px at 15% 20%, rgba(34, 211, 238, 0.18), transparent 60%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-.bg-section-purple {
-  background:
-    radial-gradient(1000px 600px at 85% 30%, rgba(168, 85, 247, 0.18), transparent 60%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-.bg-section-neutral {
-  background:
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-@keyframes subtleShift {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-.bg-animated {
-  background-size: 200% 200%;
-  animation: subtleShift 40s linear infinite;
-}
-
-/* fundo Projects - azul sutil */
-.bg-section-blue {
-  background:
-    radial-gradient(1200px 600px at 15% 20%, rgba(34, 211, 238, 0.18), transparent 60%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-/* fundo About - neutro mais suave */
-.bg-section-neutral {
-  background:
-    radial-gradient(900px 500px at 80% 30%, rgba(255, 255, 255, 0.04), transparent 70%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-/* fundo Contact - roxo sutil */
-.bg-section-purple {
-  background:
-    radial-gradient(900px 500px at 90% 15%, rgba(168, 85, 247, 0.18), transparent 60%),
-    linear-gradient(180deg, #070711, #05050c);
-}
-
-@keyframes slowShift {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-.bg-animated-soft {
-  background-size: 200% 200%;
-  animation: slowShift 30s ease-in-out infinite;
-}
-
-.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
+  min-height: 48px;
   padding: 14px 28px;
   border-radius: 14px;
-
   font-weight: 700;
+}
+
+.btn-primary {
   color: #0b0b14;
-  /* texto escuro proposital */
-  background: linear-gradient(90deg,
-      rgba(34, 211, 238, 0.25),
-      rgba(255, 255, 255, 0.25));
-
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.25),
+    rgba(255, 255, 255, 0.25)
+  );
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 10px 30px rgba(34, 211, 238, 0.25);
-
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.25);
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.03);
-  box-shadow:
-    0 20px 50px rgba(34, 211, 238, 0.35);
+  box-shadow: 0 20px 50px rgba(34, 211, 238, 0.35);
 }
 
 .btn-primary-dark {
   color: white;
-  background: linear-gradient(90deg,
-      rgba(34, 211, 238, 0.25),
-      rgba(255, 255, 255, 0.25));
 }
 
+.btn-ghost {
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Hero Photo Motion
+========================= */
 @keyframes floatSoft {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-    animation: 8s;
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
 
 .animate-float-soft {
@@ -278,14 +154,12 @@ html {
   will-change: transform;
 }
 
+/* =========================
+   Ring Animation (CORES ORIGINAIS)
+========================= */
 @keyframes spinSlow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .ring-animated {
@@ -293,43 +167,60 @@ html {
   inset: -6px;
   border-radius: 9999px;
   padding: 2px;
-  background: linear-gradient(120deg,
-      rgba(34, 211, 238, 0.25),
-     rgba(168, 85, 247, 0.18));
+  background: linear-gradient(
+    120deg,
+    rgba(34, 211, 238, 0.25),
+    rgba(168, 85, 247, 0.18),
+    rgba(34, 211, 238, 0.25)
+  );
   animation: spinSlow 18s linear infinite;
   filter: blur(0.2px);
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-  .animate-float-soft,
-  .ring-animated {
-    animation: none;
-  }
-}
 .group:hover .ring-animated {
   filter: blur(0.6px);
 }
+
+/* =========================
+   Section Backgrounds
+========================= */
+.bg-section-blue {
+  background:
+    radial-gradient(
+      1200px 600px at 15% 20%,
+      rgba(34, 211, 238, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #070711, #05050c);
+}
+
 .bg-section-about {
   background:
     radial-gradient(
       900px 500px at 15% 20%,
-      rgba(34,211,238,0.12),
+      rgba(34, 211, 238, 0.12),
       transparent 60%
     ),
     radial-gradient(
       900px 500px at 85% 30%,
-      rgba(168,85,247,0.10),
+      rgba(168, 85, 247, 0.10),
       transparent 60%
     ),
     linear-gradient(180deg, #070711, #05050c);
 }
+
 .bg-section-contact {
   background:
     radial-gradient(
       900px 500px at 50% 15%,
-      rgba(168,85,247,0.18),
+      rgba(168, 85, 247, 0.18),
       transparent 60%
     ),
     linear-gradient(180deg, #070711, #05050c);
+}
+
+.bg-section-blue,
+.bg-section-about,
+.bg-section-contact {
+  background-blend-mode: screen;
 }
