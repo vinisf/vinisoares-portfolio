@@ -18,9 +18,9 @@ export const content = {
 
         about: {
             label: "SOBRE MIM",
-            title: "Backend com cérebro, UI com carinho",
+            title: "APIs bem definidas, interfaces funcionais.",
             text:
-                "Curto construir sistemas que aguentam porrada: regra de negócio, dados bem modelados, APIs previsíveis e performance sem drama.",
+                " Desenvolvedor com experiência em soluções para gestão escolar, processos seletivos e plataformas EAD. Tenho forte atuação no Backend construindo APIs robustas, escaláveis e com foco em performance e segurança. Apaixonado por resolver desafios e otimizar a forma como sistemas conversam entre si.",
             deliver: "O que eu entrego",
         },
 
@@ -76,11 +76,12 @@ export const content = {
 
         about: {
             label: "ABOUT ME",
-            title: "Backend-driven, UI with care",
+            title: "Well-defined APIs, functional interfaces",
             text:
-                "I enjoy building systems that can handle real-world pressure: solid business logic, well-modeled data, predictable APIs, and performance without drama.",
+                "Developer with experience building solutions for school management systems, public selection processes, and e-learning platforms. Strong background in backend development, creating robust and scalable APIs with a focus on performance and security. Passionate about solving complex challenges and optimizing how systems communicate with each other.",
             deliver: "What I deliver",
         },
+
 
         contact: {
             label: "CONTACT",
