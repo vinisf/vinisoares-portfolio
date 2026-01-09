@@ -1,5 +1,5 @@
 <template>
-  <span v-if="project.featured && project.caseStudy" class="absolute -top-3 left-6
+  <span v-if="featured" class="absolute -top-3 left-6
          px-3 py-1 text-[10px] font-bold tracking-widest
          rounded-full
          bg-cyan-400 text-black">
