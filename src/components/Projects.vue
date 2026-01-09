@@ -66,7 +66,17 @@ const projects = computed<Project[]>(() =>
           simulador1],
         github: "https://github.com/vinisf/simulador-financiamento-web",
         live: "https://simulador-financiamento-web-three.vercel.app/",
-        featured: true
+        featured: true,
+        caseStudy: {
+          context:
+            "Corretores e clientes tinham dificuldade em entender valores reais de financiamento e comparar cenários de pagamento.",
+          challenge:
+            "Modelar corretamente as regras financeiras e apresentar cálculos complexos de forma clara e acessível.",
+          solution:
+            "Desenvolvi um simulador interativo com cálculos em tempo real, separando entrada, subsídio, parcelas da construtora e financiamento bancário.",
+          result:
+            "O simulador permite tomada de decisão mais rápida, reduz erros de interpretação e melhora a experiência do usuário durante a negociação."
+        }
       },
 
       {
