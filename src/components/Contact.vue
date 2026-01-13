@@ -30,16 +30,14 @@
             </svg>
             LinkedIn
           </a>
-
-          <!-- Email -->
+          <!-- 
           <a href="mailto:vini-sf@outlook.com" class="btn-ghost flex items-center gap-2">
             Email
           </a>
 
-          <!-- WhatsApp -->
           <a href="https://wa.me/5598985081959" target="_blank" class="btn-ghost flex items-center gap-2">
             WhatsApp
-          </a>
+          </a> -->
         </div>
 
         <p class="text-white/40 text-sm mt-10">
