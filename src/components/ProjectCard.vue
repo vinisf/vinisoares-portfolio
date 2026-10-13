@@ -1,58 +1,25 @@
 <template>
-  <span v-if="featured" class="absolute -top-3 left-6
-         px-3 py-1 text-[10px] font-bold tracking-widest
-         rounded-full
-         bg-cyan-400 text-black">
-    FEATURED
-  </span>
-
-  <div @click="$emit('click')" class="group relative cursor-pointer
-         rounded-2xl p-7 sm:p-8
-         border transition-all duration-300
-         hover:-translate-y-1" :class="featured
-          ? 'bg-gradient-to-b from-cyan-400/10 to-white/5 border-cyan-400/40 shadow-[0_20px_60px_rgba(34,211,238,0.18)]'
-          : 'bg-gradient-to-b from-white/10 to-white/5 border-white/10 hover:border-cyan-400/40 hover:shadow-[0_20px_60px_rgba(34,211,238,0.15)]'
-          ">
-
-    <!-- Linha de destaque -->
-    <div class="absolute inset-x-6 top-0 h-[2px]
-             bg-gradient-to-r from-cyan-400/0 via-cyan-400/60 to-cyan-400/0
-             opacity-0 group-hover:opacity-100 transition"></div>
-
-    <!-- Conteúdo -->
-    <div class="flex flex-col h-full justify-between">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold mb-3">
-          {{ title }}
-        </h3>
-
-        <p class="text-white/70 leading-relaxed mb-6">
-          {{ description }}
-        </p>
+  <article class="project-card" :class="{ featured: index === 0 }">
+    <div class="project-meta"><span>0{{ index + 1 }}</span><span>{{ project.copy[lang].category }}</span></div>
+    <ProjectMedia :project="project" />
+    <div class="project-card-copy">
+      <h3>{{ project.copy[lang].title }}</h3>
+      <p>{{ project.copy[lang].description }}</p>
+      <span v-if="project.copy[lang].status" class="project-status">{{ project.copy[lang].status }}</span>
+      <div class="chips"><span v-for="tech in project.stack" :key="tech" class="chip">{{ tech }}</span></div>
+      <div class="actions project-links">
+        <a v-for="link in project.links" :key="link.url" :href="link.url" target="_blank" rel="noopener noreferrer" class="btn-ghost">{{ link.labelKey ? content[lang].projects[link.labelKey] : link.label }}</a>
+        <a v-if="project.live" :href="project.live" target="_blank" rel="noopener noreferrer" class="btn-primary">{{ content[lang].projects.demo }} ↗</a>
+        <a v-if="project.apk" :href="project.apk" target="_blank" rel="noopener noreferrer" class="btn-primary">{{ content[lang].projects.apk }} ↓</a>
       </div>
-
-      <div class="flex flex-col gap-3">
-        <span class="text-sm text-cyanx font-medium">
-          {{ stack }}
-        </span>
-
-        <span class="text-xs text-white/40 tracking-wide">
-          Projeto real • Produção
-        </span>
-      </div>
+      <button class="project-open" @click="$emit('click')" :aria-label="`${content[lang].projects.details}: ${project.copy[lang].title}`">{{ content[lang].projects.details }}<span aria-hidden="true">↗</span></button>
     </div>
-  </div>
+  </article>
 </template>
-
-
-
 <script setup>
-defineProps({
-  title: String,
-  description: String,
-  stack: String,
-  featured: Boolean,
-})
-
-defineEmits(['click'])
+import { content } from '../i18n/content';
+import { lang } from '../i18n/lang';
+import ProjectMedia from './ProjectMedia.vue';
+defineProps({ project: { type: Object, required: true }, index: Number });
+defineEmits(['click']);
 </script>

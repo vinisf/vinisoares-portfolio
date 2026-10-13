@@ -1,92 +1,71 @@
-# 👨‍💻 Vinicius Soares — Desenvolvedor Full Stack
+﻿# Vinicius Soares | Desenvolvedor Backend Pleno
 
-Desenvolvedor Full Stack com foco em **backend sólido**, **APIs bem definidas** e **interfaces funcionais**.
-Experiência prática na construção de sistemas reais, com regras de negócio complexas, testes automatizados e deploy em produção.
+Portfólio em Vue 3, Vite e Tailwind CSS, com português e inglês. Mantém o deploy estático na Vercel: comando `npm run build`, diretório de saída `dist`.
 
-Este repositório reúne **projetos autorais**, desenvolvidos com foco em **qualidade técnica**, **clareza de código** e **boas práticas de mercado**.
+## Desenvolvimento
 
----
+- `npm install`
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
 
-## 🚀 Projetos em Destaque
+## Conteúdo
 
-### 🏠 Simulador de Financiamento Imobiliário (Full Stack)
+- `src/data/portfolio.js`: projetos, experiências, tecnologias e links compartilhados pelos dois idiomas.
+- `src/i18n/content.js`: textos da interface e metadados traduzidos.
+- `src/i18n/lang.js`: idioma persistido e atualização de HTML/metadados.
+- `src/composables/useDialog.js`: abertura modal nativa, bloqueio de scroll, Escape e retorno de foco.
+- `public/og.png` e `public/favicon.svg`: compartilhamento e identidade.
 
-Aplicação completa para simulação financeira de compra de imóveis, considerando múltiplos cenários e regras reais de mercado.
+## Currículo ATS
 
-🔗 **Demo (Frontend)**
-https://simulador-financiamento-web-three.vercel.app/
+O PDF atualizado foi informado pelo proprietário em `public/cv/Vinicius-Soares-CV.pdf`. O botão de download utiliza esse arquivo e é habilitado quando ele existe no build. Para atualizar o currículo, substitua o PDF nesse mesmo caminho e gere um novo build.
 
-🔗 **API (Backend)**
-https://simulador-financiamento-y2fi.onrender.com
+## Evidências dos projetos
 
-📂 Repositórios:
+Simulador verificado em 13/10/2026:
 
-- Frontend: https://github.com/vinisf/simulador-financiamento-web
-- Backend: https://github.com/vinisf/simulador-financiamento
+- Backend: https://github.com/vinisf/simulador-financiamento — commit `ec137ebcfb8c90900b299656a6bf36a7c6e2ed73`.
+- `server.js`: Express e `POST /api/v1/simulations`.
+- `src/simulate.js`: motor financeiro, INCC, seguro, cenários de investimento/entrada e detalhamento mensal.
+- `tests/simulate.test.js` e `package.json`: testes Jest para as regras financeiras. Os testes do projeto externo foram inspecionados, não executados neste checkout.
+- Frontend: https://github.com/vinisf/simulador-financiamento-web — commit `3b89f674bca7696c3d45f7158062876e59c0ba9b`.
+- `src/components/Simulator.vue`: interface Vue, requisição POST à API, resumo e tabela mensal.
 
-#### Funcionalidades
+Sistema de Seleção Pública e API de Gestão Educacional foram removidos da seção de projetos por não terem repositórios públicos informados. As contribuições profissionais permanecem na seção de experiências.
 
-- Simulação de financiamento com:
-  - fase de obra (construtora + INCC + seguro)
-  - fase pós-obra (Caixa + condomínio)
-- Comparação de estratégias:
-  - investir durante a obra
-  - aumentar o ATO (entrada)
-- Resumo financeiro consolidado
-- Tabela detalhada mês a mês
-- API REST versionada
-- Testes automatizados no backend
-- Deploy público (Render + Vercel)
+As capturas dos sistemas profissionais foram preservadas no diretório de assets, mas retiradas da interface e do bundle: precisam de revisão de confidencialidade antes de voltar ao site. O GIF público do simulador ganhou uma prévia estática leve; evita download de 11 MB e respeita movimento reduzido.
 
-#### Tecnologias
+## Verificação manual
 
-- **Backend:** Node.js, Express, Jest
-- **Frontend:** Vue 3, Vite, JavaScript
-- **Infra:** Render, Vercel
-- **Outros:** Git, REST, CORS, variáveis de ambiente
+Navegar em desktop e mobile; alternar PT/EN e recarregar; abrir cada projeto por teclado; testar Tab, Shift+Tab, Escape, clique externo e retorno de foco; abrir o menu mobile e navegar por seus links; conferir ausência de overflow em telas pequenas e download do currículo. Não há deploy automático neste trabalho.
 
----
+## Resultado da validação da modernização inicial (13/10/2026)
 
-## 🛠️ Principais habilidades técnicas
+- Build Vite concluído; nenhuma dependência nova adicionada ao projeto.
+- Chrome headless: 3 projetos em PT/EN, persistência de idioma e metadados traduzidos.
+- Todos os modais: abertura por Enter, Tab/Shift+Tab, Escape, clique externo, retorno de foco e restauração de scroll.
+- Menu mobile: tradução, teclado, navegação e fechamento ao mudar para desktop.
+- Sem overflow horizontal em 320, 390, 768, 1024 e 1440 px; screenshots desktop/mobile inspecionados.
+- Movimento reduzido respeitado, links externos protegidos e nenhum erro de JavaScript ou recurso local.
+- GitHub e demo: HTTP 200. LinkedIn: HTTP 999 (bloqueio de acesso automatizado; confirmar manualmente).
+- `git diff --check` sem erros de whitespace. Browserslist informa base desatualizada, sem impedir o build.
+- Playwright usado apenas em diretório temporário; não integra as dependências do portfólio.
+- Os mesmos testes de navegador também passaram no build de produção servido com `vite preview`, confirmando os caminhos de assets gerados para hospedagem estática.
 
-### Backend
+## Projetos públicos — atualização em 13/10/2026
 
-- Node.js / Express
-- APIs REST
-- Modelagem de regras de negócio
-- Testes automatizados (Jest)
-- Integração entre serviços
-- Deploy em produção
+A seção agora apresenta somente o Simulador de Financiamento Imobiliário e o ViniFit, em português e inglês. As experiências profissionais foram preservadas.
 
-### Frontend
+ViniFit: https://github.com/vinisf/Vinifit — commit verificado `7ba525df031bb93cd43e1ee24b5e95ae004d9a66`.
 
-- Vue 3 (Composition API)
-- Consumo de APIs
-- Formulários dinâmicos
-- Tabelas e visualização de dados
-- Responsividade
-- UX focado em clareza
+- `package.json`: Vue 3, TypeScript, Vite, Tailwind CSS, Pinia, Vue Router, Capacitor e plugin SQLite.
+- `src/services/storage.ts`: SQLite na plataforma nativa e localStorage no ambiente web; estado serializado em JSON.
+- `src/stores/app.ts`: fichas/exercícios, séries, cargas, repetições, histórico, treino em andamento, pesagens, meta e backups com validação básica.
+- `src/views/WorkoutsView.vue`: interface de fichas e exportação/importação JSON, com Filesystem e Share no Android.
+- `src/views/ActiveWorkoutView.vue`, `ProgressView.vue` e `src/components/RestTimer.vue`: execução, evolução de peso e cronômetro de descanso.
+- A árvore pública não contém screenshots do app. Adicione capturas reais em `src/assets/projects/vinifit/`, conforme o README desse diretório. As imagens entram automaticamente no próximo build, em ordem alfabética, com moldura Android e navegação no modal.
+- A API pública de Releases retornou uma lista vazia. Nenhum botão de APK é exibido. Se um APK oficial for publicado, conferir seu asset em Releases antes de preencher `apk` em `src/data/portfolio.js`.
+- Os commits públicos do simulador seguem os mesmos já registrados acima; arquitetura e testes descritos correspondem a esses arquivos. Não há alegações de execução dos testes dos repositórios externos.
 
-### Engenharia de Software
-
-- Git (commits semânticos)
-- Separação de responsabilidades
-- Arquitetura desacoplada (API + Web)
-- Tratamento de erros
-- Documentação técnica
-
----
-
-## 🧠 Abordagem de desenvolvimento
-
-- Código limpo e legível
-- Regras de negócio explícitas
-- Preferência por soluções simples e previsíveis
-- Evolução incremental (commits pequenos)
-- Foco em produto, não só em código
-
----
-
-## 📌 Observação
-
-Todos os projetos aqui foram desenvolvidos com fins de **aprendizado, portfólio e demonstração técnica**, simulando cenários reais de produção.
+Validação desta atualização: build concluído; Chrome headless no build de produção confirmou dois projetos em PT/EN, três experiências preservadas, modais por teclado com retorno de foco, área Android sem imagens fictícias, ausência de link APK e ausência de overflow em 320, 390, 768, 1024 e 1440 px. Nenhum erro de JavaScript ou recurso local. GitHub dos três repositórios e demo do simulador responderam HTTP 200. Nenhuma dependência adicionada e nenhum deploy realizado.

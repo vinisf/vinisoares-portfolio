@@ -1,73 +1,17 @@
 <template>
-  <section id="top" class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-    <!-- CONTEÚDO -->
-    <div class="relative z-10 w-full
-             max-w-5xl lg:max-w-6xl
-             mx-auto
-             grid grid-cols-1 md:grid-cols-2
-             gap-8 md:gap-10 lg:gap-12
-             items-center" v-reveal>
-      <!-- TEXTO -->
-      <div class="text-center md:text-left max-w-xl mx-auto md:mx-0 order-2 md:order-1">
-        <p class="text-sm tracking-[0.3em] text-white/60 mb-4">
-          {{ content[lang].hero.role }}
-        </p>
-
-        <h1 class="text-5xl md:text-6xl font-black mb-6">
-          {{ content[lang].hero.title }}
-        </h1>
-
-        <p class="text-white/70 text-lg mb-10">
-          {{ content[lang].hero.subtitle }}
-        </p>
-
-        <div class="flex justify-center md:justify-start gap-4">
-          <a href="#projects" class="btn-primary btn-primary-dark">
-            {{ content[lang].hero.projects }}
-          </a>
-
-
-          <a href="/cv/Vinicius-Soares-CV.pdf" download target="_blank" rel="noopener noreferrer" class="btn-ghost">
-            Download CV
-          </a>
-
-
-
-        </div>
-      </div>
-
-      <!-- FOTO -->
-      <div class="relative flex justify-center group order-1 md:order-2">
-        <!-- Glow LOCAL da foto -->
-        <div class="absolute
-                 w-[260px] h-[260px]
-                 lg:w-[300px] lg:h-[300px]
-                 rounded-full
-                 bg-cyan-400/20
-                 blur-[160px]"></div>
-
-        <!-- Ring animado -->
-        <div class="ring-animated group-hover:ring-fast"></div>
-
-        <!-- Foto -->
-        <div class="relative
-                 w-[180px] h-[180px]
-                 sm:w-[200px] sm:h-[200px]
-                 md:w-[230px] md:h-[230px]
-                 lg:w-[260px] lg:h-[260px]
-                 rounded-full
-                 overflow-hidden
-                 border border-white/20
-                 shadow-[0_30px_80px_rgba(0,0,0,0.7)]
-                 animate-float-soft">
-          <img src="/src/assets/profile.png" alt="Foto de Vinicius Soares" class="w-full h-full object-cover" />
-        </div>
-      </div>
-    </div>
-  </section>
+ <section id="top" class="hero container">
+ <div class="hero-copy"><p class="eyebrow">PHP / LARAVEL / NODE.JS</p><h1>{{ content[lang].hero.title }}</h1><p class="hero-role">{{ content[lang].hero.role }}</p><p class="hero-description">{{ content[lang].hero.subtitle }}</p>
+ <div class="actions"><a href="#projects" class="btn-primary">{{ content[lang].hero.projects }} <span aria-hidden="true">↗</span></a><a :href="links.github" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub</a><a :href="links.linkedin" target="_blank" rel="noopener noreferrer" class="btn-ghost">LinkedIn</a>
+ <a v-if="resume" :href="resume" download class="btn-ghost">{{ content[lang].hero.resume }}</a><button v-else class="btn-ghost" disabled aria-describedby="resume-note">{{ content[lang].hero.resume }}</button></div>
+ <p v-if="!resume" id="resume-note" class="note">{{ content[lang].hero.unavailable }}</p>
+ </div>
+ <div class="portrait"><img :src="profile" :alt="lang === 'pt' ? 'Foto de Vinicius Soares' : 'Portrait of Vinicius Soares'" width="320" height="400" fetchpriority="high" /><div class="portrait-caption"><span>Vinicius Soares</span><span>Backend & APIs</span></div></div>
+ <div class="hero-foot"><span>{{ lang === 'pt' ? 'APIs · Integrações · Sistemas SaaS' : 'APIs · Integrations · SaaS systems' }}</span><a href="#about">{{ content[lang].nav.about }} <span aria-hidden="true">↓</span></a></div>
+ </section>
 </template>
-
 <script setup>
-import { content } from "@/i18n/content";
-import { lang } from "@/i18n/lang";
+import { content } from '../i18n/content';
+import { lang } from '../i18n/lang';
+import { links, resume } from '../data/portfolio';
+import profile from '../assets/profile.png';
 </script>

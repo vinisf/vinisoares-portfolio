@@ -1,106 +1,22 @@
 export const content = {
-    pt: {
-        hero: {
-            role: "FULL STACK DEVELOPER",
-            title: "Vinicius Soares",
-            subtitle:
-                "Construo produtos web com foco em performance, APIs bem feitas e UX limpa.",
-            projects: "Ver projetos",
-            contact: "Contato",
-        },
-
-        projects: {
-            label: "PROJETOS",
-            title: "Coisas que eu construí",
-            subtitle:
-                "Projetos reais, focados em regra de negócio, dados e UX limpa.",
-        },
-
-        about: {
-            label: "SOBRE MIM",
-            title: "APIs bem definidas, interfaces funcionais.",
-            text:
-                " Desenvolvedor com experiência em soluções para gestão escolar, processos seletivos e plataformas EAD. Tenho forte atuação no Backend construindo APIs robustas, escaláveis e com foco em performance e segurança. Apaixonado por resolver desafios e otimizar a forma como sistemas conversam entre si.",
-            deliver: "O que eu entrego",
-        },
-
-        contact: {
-            label: "CONTATO",
-            title: "Bora trabalhar junto?",
-            text:
-                "Se você curte backend bem feito, dados organizados e produto funcionando de verdade, chama.",
-            footer: "Respondo mais rápido pelo LinkedIn.",
-        },
-        nav: {
-            about: "Sobre",
-            projects: "Projetos",
-            contact: "Contato",
-            cta: "Ver projetos",
-        },
-        footer: {
-            name: "Vinicius Soares",
-            role: "Full Stack Developer",
-            links: {
-                projects: "Projetos",
-                about: "Sobre",
-                contact: "Contato",
-            },
-            copyright: "Todos os direitos reservados.",
-        },
-
-    },
-
-    en: {
-        nav: {
-            about: "About",
-            projects: "Projects",
-            contact: "Contact",
-            cta: "View projects",
-        },
-
-        hero: {
-            role: "FULL STACK DEVELOPER",
-            title: "Vinicius Soares",
-            subtitle:
-                "I build web products focused on performance, clean APIs, and real-world UX.",
-            projects: "View projects",
-            contact: "Contact",
-        },
-
-        projects: {
-            label: "PROJECTS",
-            title: "Things I’ve built",
-            subtitle:
-                "Real-world projects focused on business rules, data integrity, and clean UX.",
-        },
-
-        about: {
-            label: "ABOUT ME",
-            title: "Well-defined APIs, functional interfaces",
-            text:
-                "Developer with experience building solutions for school management systems, public selection processes, and e-learning platforms. Strong background in backend development, creating robust and scalable APIs with a focus on performance and security. Passionate about solving complex challenges and optimizing how systems communicate with each other.",
-            deliver: "What I deliver",
-        },
-
-
-        contact: {
-            label: "CONTACT",
-            title: "Let’s work together",
-            text:
-                "If you value well-built backends, organized data, and products that actually work, feel free to reach out.",
-            footer: "I usually reply faster on LinkedIn.",
-        },
-        footer: {
-            name: "Vinicius Soares",
-            role: "Full Stack Developer",
-            links: {
-                projects: "Projects",
-                about: "About",
-                contact: "Contact",
-            },
-            copyright: "All rights reserved.",
-        },
-
-    },
-
+ pt: {
+ nav: { about: 'Sobre', experience: 'Experiência', projects: 'Projetos', contact: 'Contato' },
+ hero: { role: 'Desenvolvedor Backend Pleno', title: 'Vinicius Soares', subtitle: 'Desenvolvedor de software especializado em PHP, Laravel e Node.js, com experiência na construção de APIs, integrações e soluções SaaS.', projects: 'Ver projetos', resume: 'Baixar currículo', unavailable: 'Currículo atualizado em preparação' },
+ about: { label: 'SOBRE MIM', title: 'Experiência prática. Regras de negócio bem definidas.', text: 'Sou desenvolvedor de software com mais de 4 anos de experiência no desenvolvimento e manutenção de aplicações web e sistemas corporativos.', detail: 'Atuo com plataformas educacionais, processos seletivos, sistemas de gestão e produtos SaaS. Meu foco é backend: APIs REST, integrações entre sistemas, processamento assíncrono, bancos de dados relacionais e regras de negócio.', categories: ['Backend', 'Banco de dados', 'Ferramentas e infraestrutura', 'Integrações'] },
+ experience: { label: 'TRAJETÓRIA', title: 'Experiência profissional', current: 'Atual' },
+ projects: { label: 'PROJETOS AUTORAIS', title: 'Código público. Soluções em prática.', subtitle: 'Projetos que você pode explorar, executar e conhecer pelo código-fonte no GitHub.', details: 'Detalhes técnicos', objective: 'Objetivo', contribution: 'Minha contribuição', challenge: 'Desafio técnico', solution: 'Arquitetura e solução', demo: 'Demonstração', code: 'Ver código no GitHub', apk: 'Baixar APK', features: 'Funcionalidades', screenshots: 'Capturas ainda não disponíveis', public: 'Código-fonte público' },
+ contact: { label: 'CONTATO', title: 'Vamos conversar sobre backend?', text: 'Entre em contato para conversar sobre oportunidades como Desenvolvedor Backend Pleno e conhecer melhor minha experiência.', footer: 'Fale comigo pelo LinkedIn.' },
+ ui: { close: 'Fechar', menu: 'Menu de navegação', openMenu: 'Abrir menu', previous: 'Imagem anterior', next: 'Próxima imagem', top: 'Voltar ao topo', skip: 'Pular para o conteúdo', language: 'Switch to English' },
+ seo: { title: 'Vinicius Soares | Desenvolvedor Backend Pleno', description: 'Portfólio de Vinicius Soares, Desenvolvedor Backend especializado em PHP, Laravel, Node.js, APIs REST e desenvolvimento de sistemas.' }
+ },
+ en: {
+ nav: { about: 'About', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
+ hero: { role: 'Mid-level Backend Developer', title: 'Vinicius Soares', subtitle: 'Software developer specializing in PHP, Laravel and Node.js, with experience building APIs, integrations and SaaS solutions.', projects: 'View projects', resume: 'Download résumé', unavailable: 'Updated résumé in preparation' },
+ about: { label: 'ABOUT ME', title: 'Practical experience. Well-defined business rules.', text: 'I am a software developer with over 4 years of experience developing and maintaining web applications and business systems.', detail: 'I work with educational platforms, selection processes, management systems and SaaS products. My focus is backend: REST APIs, system integrations, asynchronous processing, relational databases and business rules.', categories: ['Backend', 'Databases', 'Tools and infrastructure', 'Integrations'] },
+ experience: { label: 'CAREER', title: 'Professional experience', current: 'Present' },
+ projects: { label: 'PERSONAL PROJECTS', title: 'Public code. Practical solutions.', subtitle: 'Projects you can explore, run and inspect through their source code on GitHub.', details: 'Technical details', objective: 'Objective', contribution: 'My contribution', challenge: 'Technical challenge', solution: 'Architecture and solution', demo: 'Live demo', code: 'View code on GitHub', apk: 'Download APK', features: 'Features', screenshots: 'Screenshots not available yet', public: 'Public source code' },
+ contact: { label: 'CONTACT', title: 'Let’s talk about backend.', text: 'Get in touch to discuss mid-level backend developer opportunities and learn more about my experience.', footer: 'Contact me on LinkedIn.' },
+ ui: { close: 'Close', menu: 'Navigation menu', openMenu: 'Open menu', previous: 'Previous image', next: 'Next image', top: 'Back to top', skip: 'Skip to content', language: 'Mudar para português' },
+ seo: { title: 'Vinicius Soares | Mid-level Backend Developer', description: 'Vinicius Soares’ portfolio. Backend developer specializing in PHP, Laravel, Node.js, REST APIs and business systems.' }
+ }
 };

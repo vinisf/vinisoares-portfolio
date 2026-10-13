@@ -1,71 +1,26 @@
 <template>
-  <transition name="menu-slide">
-    <div
-      v-if="open"
-      class="fixed inset-0 z-[999] md:hidden"
-    >
-      <!-- OVERLAY -->
-      <div
-        class="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        @click="$emit('close')"
-      ></div>
-
-      <!-- MENU LATERAL -->
-      <aside
-        class="absolute top-0 right-0 h-full
-               w-[85%] max-w-sm
-               bg-[#0b0b14]
-               border-l border-white/10
-               px-8 py-10
-               flex flex-col
-               animate-menu-panel"
-      >
-        <!-- HEADER -->
-        <div class="flex items-center justify-between mb-12">
-          <span class="font-bold text-lg">
-            <span class="text-cyanx">Vini</span>
-            <span class="text-white/60">.dev</span>
-          </span>
-
-          <button
-            @click="$emit('close')"
-            class="text-2xl text-white/70 hover:text-white"
-          >
-            ✕
-          </button>
-        </div>
-
-        <!-- LINKS -->
-        <nav class="flex flex-col gap-8 text-2xl font-bold">
-          <a @click="go('#about')" class="mobile-link">Sobre</a>
-          <a @click="go('#projects')" class="mobile-link">Projetos</a>
-          <a @click="go('#contact')" class="mobile-link">Contato</a>
-        </nav>
-
-        <!-- FOOTER -->
-        <div class="mt-auto pt-10 text-xs text-white/40">
-          © {{ new Date().getFullYear() }} Vini.dev
-        </div>
-      </aside>
-    </div>
-  </transition>
+ <dialog id="mobile-menu" ref="dialog" class="mobile-dialog" :aria-label="content[lang].ui.menu" @cancel="cancel" @click="backdrop" @keydown="keydown">
+ <div class="mobile-panel"><div class="mobile-heading"><span class="brand">vs<span class="brand-suffix">.dev</span></span><button autofocus class="icon-button" :aria-label="content[lang].ui.close" @click="$emit('close')">×</button></div>
+ <nav :aria-label="content[lang].ui.menu"><a v-for="(label, id) in content[lang].nav" :key="id" :href="`#${id}`" @click="go(id)">{{ label }}<span aria-hidden="true">↗</span></a></nav>
+ <button class="language-button" @click="toggleLang" :aria-label="content[lang].ui.language">{{ lang === 'pt' ? 'English' : 'Português' }}</button></div>
+ </dialog>
 </template>
-
 <script setup>
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { content } from '../i18n/content';
+import { lang, toggleLang } from '../i18n/lang';
+import { useDialog } from '../composables/useDialog';
 const props = defineProps({ open: Boolean });
-const emit = defineEmits(["close"]);
-
-function go(id) {
-  emit("close");
-
-  setTimeout(() => {
-    const el = document.querySelector(id);
-    if (!el) return;
-
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 300);
+const emit = defineEmits(['close']);
+const dialog = ref(null);
+const { cancel, backdrop, keydown } = useDialog(dialog, () => props.open, () => emit('close'));
+async function go(id) {
+ emit('close');
+ await nextTick();
+ document.querySelector(`#${id} h2`)?.focus({ preventScroll: true });
 }
+const desktop = window.matchMedia('(min-width: 768px)');
+function resize() { if (desktop.matches && props.open) emit('close'); }
+onMounted(() => desktop.addEventListener('change', resize));
+onUnmounted(() => desktop.removeEventListener('change', resize));
 </script>

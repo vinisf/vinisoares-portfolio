@@ -1,178 +1,26 @@
 <template>
-  <div v-if="open" class="fixed inset-0 z-[999]
-           flex items-center justify-center
-           px-4 py-6 sm:py-10">
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="close"></div>
-
-    <!-- Modal -->
-    <div class="relative z-10 w-full
-             max-w-lg sm:max-w-xl lg:max-w-2xl
-             max-h-[90vh]
-             rounded-2xl bg-[#0b0b14]
-             border border-white/10
-             overflow-hidden
-             animate-modal">
-      <!-- SLIDER -->
-      <div v-if="project.images && project.images.length" class="relative
-               h-40 sm:h-48 md:h-56
-               overflow-hidden">
-        <img :src="project.images[current]" class="w-full h-full object-cover transition" alt="Preview do projeto" />
-
-        <!-- Setas -->
-        <button v-if="project.images.length > 1" @click.stop="prev" class="absolute left-3 top-1/2 -translate-y-1/2
-                 bg-black/60 hover:bg-black/80
-                 text-white
-                 w-10 h-10 rounded-full
-                 flex items-center justify-center">
-          ‹
-        </button>
-
-        <button v-if="project.images.length > 1" @click.stop="next" class="absolute right-3 top-1/2 -translate-y-1/2
-                 bg-black/60 hover:bg-black/80
-                 text-white
-                 w-10 h-10 rounded-full
-                 flex items-center justify-center">
-          ›
-        </button>
-
-        <!-- Indicadores -->
-        <div v-if="project.images.length > 1" class="absolute bottom-3 left-1/2 -translate-x-1/2
-                 flex gap-2">
-          <span v-for="(_, i) in project.images" :key="i" class="w-2 h-2 rounded-full transition"
-            :class="i === current ? 'bg-white' : 'bg-white/40'"></span>
-        </div>
-      </div>
-
-      <!-- CONTEÚDO -->
-      <div class="relative p-5 sm:p-6
-               overflow-y-auto
-               max-h-[60vh] sm:max-h-[65vh]">
-        <!-- Fechar -->
-        <button class="absolute top-3 right-3
-                 text-white/60 hover:text-white
-                 text-lg" @click="close">
-          ✕
-        </button>
-
-        <h3 class="text-xl sm:text-2xl font-bold mb-3">
-          {{ project.title }}
-        </h3>
-
-        <p class="text-white/70 mb-6 leading-relaxed">
-          {{ project.longDescription }}
-        </p>
-        <!-- CASE REAL -->
-        <div v-if="project.caseStudy" class="mt-8 p-6 rounded-xl
-         bg-white/5 border border-white/10">
-          <h4 class="text-sm font-bold tracking-widest text-cyanx mb-4">
-            CASE REAL
-          </h4>
-
-          <div class="space-y-4 text-sm text-white/75 leading-relaxed">
-            <p>
-              <span class="font-semibold text-white">Contexto:</span>
-              {{ project.caseStudy.context }}
-            </p>
-
-            <p>
-              <span class="font-semibold text-white">Desafio:</span>
-              {{ project.caseStudy.challenge }}
-            </p>
-
-            <p>
-              <span class="font-semibold text-white">Solução:</span>
-              {{ project.caseStudy.solution }}
-            </p>
-
-            <p>
-              <span class="font-semibold text-white">Resultado:</span>
-              {{ project.caseStudy.result }}
-            </p>
-          </div>
-        </div>
-        <br>
-
-        <div class="mb-6">
-          <h4 class="text-xs uppercase tracking-wider text-white/40 mb-1">
-            Stack
-          </h4>
-          <p class="text-cyanx font-medium">
-            {{ project.stack }}
-          </p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a v-if="project.github" :href="project.github" target="_blank" class="flex-1 px-4 py-2 rounded-lg
-                   bg-white text-black font-semibold
-                   text-center">
-            GitHub
-          </a>
-
-          <a v-if="project.live" :href="project.live" target="_blank" class="flex-1 px-4 py-2 rounded-lg
-                   border border-white/20
-                   text-center">
-            Ver live
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+ <dialog ref="dialog" class="project-dialog" aria-labelledby="project-title" @cancel="cancel" @click="backdrop" @keydown="keydown">
+ <div v-if="project" class="modal-content"><div class="modal-heading"><p class="eyebrow">{{ project.copy[lang].category }} · {{ content[lang].projects.public }}</p><button autofocus class="icon-button" :aria-label="content[lang].ui.close" @click="$emit('close')">×</button></div>
+ <h2 id="project-title">{{ project.copy[lang].title }}</h2><p class="body-copy">{{ project.copy[lang].description }}</p>
+ <p v-if="project.copy[lang].status" class="project-status">{{ project.copy[lang].status }}</p>
+ <figure class="project-preview"><ProjectMedia :project="project" :index="current" /><div v-if="project.images?.length > 1" class="actions"><button class="btn-ghost" :aria-label="content[lang].ui.previous" @click="move(-1)">←</button><span class="note" aria-live="polite">{{ current + 1 }} / {{ project.images.length }}</span><button class="btn-ghost" :aria-label="content[lang].ui.next" @click="move(1)">→</button></div></figure>
+ <dl class="case-details"><template v-for="field in ['objective', 'contribution', 'challenge', 'solution']" :key="field"><div v-if="project.copy[lang][field]"><dt>{{ content[lang].projects[field] }}</dt><dd>{{ project.copy[lang][field] }}</dd></div></template></dl>
+ <div class="chips"><span v-for="tech in project.stack" :key="tech" class="chip">{{ tech }}</span></div>
+ <section class="project-features"><h3>{{ content[lang].projects.features }}</h3><ul><li v-for="feature in project.copy[lang].features" :key="feature">{{ feature }}</li></ul></section>
+ <div class="actions"><a v-for="link in project.links" :key="link.url" :href="link.url" target="_blank" rel="noopener noreferrer" class="btn-ghost">{{ link.labelKey ? content[lang].projects[link.labelKey] : link.label }}</a><a v-if="project.live" :href="project.live" target="_blank" rel="noopener noreferrer" class="btn-primary">{{ content[lang].projects.demo }} ↗</a><a v-if="project.apk" :href="project.apk" target="_blank" rel="noopener noreferrer" class="btn-primary">{{ content[lang].projects.apk }} ↓</a></div>
+ </div></dialog>
 </template>
-
-
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
-
-const props = defineProps({
-  open: Boolean,
-  project: Object,
-})
-
-const emit = defineEmits(['close'])
-
-const current = ref(0)
-
-
-
-function next() {
-  current.value =
-    (current.value + 1) % props.project.images.length
-}
-
-function prev() {
-  current.value =
-    (current.value - 1 + props.project.images.length) %
-    props.project.images.length
-}
-
-function close() {
-  emit('close')
-}
-
-// ESC
-function handleKey(e) {
-  if (e.key === 'Escape') close()
-  if (e.key === 'ArrowRight') next()
-  if (e.key === 'ArrowLeft') prev()
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', handleKey)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKey)
-})
-
-
-watch(
-  () => props.open,
-  (isOpen) => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    if (isOpen) current.value = 0
-  }
-)
-
-
+import { ref, watch } from 'vue';
+import { content } from '../i18n/content';
+import { lang } from '../i18n/lang';
+import { useDialog } from '../composables/useDialog';
+import ProjectMedia from './ProjectMedia.vue';
+const props = defineProps({ open: Boolean, project: Object });
+const emit = defineEmits(['close']);
+const dialog = ref(null);
+const current = ref(0);
+watch(() => props.project?.id, () => { current.value = 0; });
+function move(direction) { current.value = (current.value + direction + props.project.images.length) % props.project.images.length; }
+const { cancel, backdrop, keydown } = useDialog(dialog, () => props.open, () => emit('close'));
 </script>
